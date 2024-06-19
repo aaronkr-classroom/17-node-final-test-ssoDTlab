@@ -32,12 +32,12 @@ module.exports = {
     let newDiscussion = new Discussion(getDiscussionParams(req.body)); // Listing 22.3 (p. 328)
     Discussion.create(newDiscussion)
       .then((discussion) => {
-        res.locals.redirect = discussion;
+        res.locals.redirect = `/discussions/${discussion._id}`; // 생성된 토론의 페이지로 리디렉션 설정
         res.locals.discussion = discussion;
         next();
       })
       .catch((error) => {
-        console.log("Can't create");
+        console.log(`Error creating discussion: ${error.message}`);
         next(error);
       });
   },
