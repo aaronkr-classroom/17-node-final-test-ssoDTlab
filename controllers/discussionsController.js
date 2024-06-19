@@ -2,11 +2,11 @@
 "use strict";
 
 const Discussion = require("../models/Discussion"), // 사용자 모델 요청
-  getDiscussionParams = (body, discussion) => {
+  getDiscussionParams = (body, user) => {
     return {
       title: body.title,
       description: body.description,
-      author: discussion,
+      author: user,
       category: body.category,
       tags: body.tags,
     };
